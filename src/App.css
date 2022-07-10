@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.css-bhp9pd-MuiPaper-root-MuiCard-root{
   display: flex;
+
+  padding: 5px;
   flex-direction: column;
-  align-items: center;
+}
+
+.container-movie{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.MuiTypography-root{
+display: flex;
+}
+
+.search-box{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 80%;
+padding-left: 25px
 }
 
-.App-link {
-  color: #61dafb;
+.MuiFormControl-root{
+  width: 80%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image{
+  max-width: 30%
+}
+.MuiPaper-root{
+  text-align: center;
+  align-items: center;
 }

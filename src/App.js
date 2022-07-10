@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-function App() {
+import Search from "./components/search";
+import Movies from "./components/movies";
+import NotFoundMovie from "./components/notFountMovie";
+import "./App.css";
+
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const [totalResults, setTotalResults] = useState([]);
+  const [term, setTerm] = useState("sky");
+
+  const searchMovies = (page = 1) => {
+    axios.get(`/getMovies?term=${term}&page=${page}`).then((res) => {
+      setMovies(res.data.Search);
+      setTotalResults(res.data.totalResults);
+    });
+  };
+
+  useEffect(() => {
+    searchMovies();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search search={searchMovies} term={term} setTerm={setTerm} />
+      {movies && (
+        <Movies
+          movies={movies}
+          search={searchMovies}
+          totalResults={totalResults}
+        />
+      )}
+      {!movies && <NotFoundMovie search={term} />}
     </div>
   );
-}
-
+};
 export default App;
